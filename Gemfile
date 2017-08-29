@@ -1,5 +1,5 @@
-source 'https://gems.ruby-china.org/'  #Ruby-China源
-#source 'https://rubygems.org/'  #官方源
+# source 'https://gems.ruby-china.org/'  #Ruby-China源
+source 'https://rubygems.org/'  #官方源
 
 gem 'rails', '4.2.7'
 gem 'mysql2', '0.4.5' # Use mysql as the database for Active Record
