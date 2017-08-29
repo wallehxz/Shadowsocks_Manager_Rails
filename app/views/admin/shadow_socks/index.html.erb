@@ -1,0 +1,56 @@
+<%= content_for(:title,  '基础配置列表 | GWF') %>
+<section class="content-header">
+  <h1>
+    基础配置 <small>预览</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-btc"></i> Dashboard</a></li>
+    <li class="active"><i class="fa fa-btc"></i> 基础配置</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="box box-primary">
+    <div class="box-header">
+      <a href="<%= new_admin_shadow_sock_path %>" class="btn bg-primary btn-flat"><i class="ion-plus"></i> 添加配置</a>
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+            <thead>
+            <tr>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">路径</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">地址</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">方式</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">超时</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center;width: 180px">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @socks.each do |item| %>
+              <tr style="text-align: center">
+                <td><%= item.local_path %></td>
+                <td><%= item.server %></td>
+                <td><%= item.method %></td>
+                <td><%= item.timeout %></td>
+                <td>
+                  <a href="<%= edit_admin_shadow_sock_path(item) %>" class="btn bg-orange btn-flat">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    编辑
+                  </a>
+                  <a href="<%= admin_shadow_sock_path(item) %>" class="btn bg-red btn-flat" data-method="delete" data-confirm="确定删除该配置">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    删除
+                  </a>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+      </div>
+    </div>
+  </div>
+</section>

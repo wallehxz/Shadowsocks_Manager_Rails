@@ -1,0 +1,67 @@
+<%= form_for(['admin',@sock]) do |f| %>
+<div class="box-body">
+  <div class="col-md-5">
+    <div class="form-group has-error">
+      <label>文件路径</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-folder"></i>
+        </div>
+        <%= f.text_field :local_path, class:'form-control', placeholder:'（必填* 配置文件绝对路径）' %>
+      </div>
+    </div>
+    <div class="form-group has-error">
+      <label>加速模式</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-flag"></i>
+        </div>
+        <%= f.select(:fast_open, [['启用',true],['禁用',false]], {prompt:'请选择状态'},{:class => 'form-control'}) %>
+      </div>
+    </div>
+    <div class="form-group has-error">
+      <label>IP地址</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-check"></i>
+        </div>
+        <%= f.text_field :server, class:'form-control', placeholder:'（必填* 服务器的公共IP地址）' %>
+      </div>
+    </div>
+    <div class="form-group has-error">
+      <label>通信方式</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-random"></i>
+        </div>
+        <%= f.text_field :method, class:'form-control', placeholder:'（必填* 可选择 “aes-256-cfb”, “rc4-md5”等等）' %>
+      </div>
+    </div>
+    <div class="form-group has-error">
+      <label>连接超时</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-times"></i>
+        </div>
+        <%= f.text_field :timeout, class:'form-control', placeholder:'（必填* 超时时间[秒]）' %>
+      </div>
+    </div>
+    <div class="form-group has-error">
+      <label>运行数量</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-wheelchair"></i>
+        </div>
+        <%= f.text_field :workers, class:'form-control', placeholder:'（必填* 后台可运行的工人数量）' %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <hr>
+    <div>
+      <button type="submit" class="btn bg-maroon btn-flat" style="width: 120px">提交</button>
+      <a href="<%= request.referrer %>" class="btn bg-navy btn-flat" style="width: 120px">取消</a>
+    </div>
+  </div>
+</div>
+<% end %>

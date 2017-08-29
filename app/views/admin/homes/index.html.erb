@@ -1,0 +1,66 @@
+<section class="content">
+  <div class="row">
+
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h3><%= `lsof -i | grep 'ssserver' | grep 'ESTABLISHED' | wc -l` %></h3>
+          <p>活动链接</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-sitemap"></i>
+        </div>
+        <a href="#" class="small-box-footer">&nbsp;</a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-teal">
+        <div class="inner">
+          <h3><%= List.count %></h3>
+          <p>分配账户</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-vcard"></i>
+        </div>
+        <a href="#" class="small-box-footer">&nbsp;</a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-maroon">
+        <div class="inner">
+          <h3><span style="font-size: 23px;"><%= ShadowSock.first.try(:server) %></span></h3>
+          <p>服务节点</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-server"></i>
+        </div>
+        <a href="#" class="small-box-footer">&nbsp;</a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-olive">
+        <div class="inner">
+          <h3><span style="font-size: 27px;"><%= ShadowSock.first.try(:method) %></span></h3>
+          <p>通信方式</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-exchange"></i>
+        </div>
+        <a href="#" class="small-box-footer">&nbsp;</a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-blue">
+        <div class="inner">
+          <h3>START</h3>
+          <p>&nbsp;</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-rocket"></i>
+        </div>
+        <a href="<%= admin_start_service_path%>" class="small-box-footer">&nbsp;SERVICE&nbsp;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
