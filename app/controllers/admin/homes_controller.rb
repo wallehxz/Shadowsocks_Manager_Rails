@@ -15,7 +15,7 @@ class Admin::HomesController < Admin::BaseController
 private
 
   def current_connection
-    o, s = Open3.capture2("lsof -i | grep 'ssserver' | grep 'ESTABLISHED' | wc -l")
+    o, s = Open3.capture2("lsof -i | grep 'ssserver' | grep 'ESTABLISHED' | grep ':8' | wc -l")
     total = o.chomp
   end
 end
