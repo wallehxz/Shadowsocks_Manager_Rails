@@ -48,7 +48,7 @@ class List < ActiveRecord::Base
 
   def usage_amount
     if self.total_bytes.present? && self.used_bytes.present?
-      return (self.used_bytes/self.total_bytes).to_i
+      return (self.used_bytes * 100 /self.total_bytes).round(4)
     else
       return 0
     end

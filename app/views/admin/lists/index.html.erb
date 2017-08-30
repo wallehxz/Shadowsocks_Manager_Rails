@@ -21,9 +21,9 @@
             <tr>
               <th tabindex="0" aria-controls="example1" style="text-align: center">备注</th>
               <th tabindex="0" aria-controls="example1" style="text-align: center">端口</th>
-              <th tabindex="0" aria-controls="example1" style="text-align: center">密码</th>
-              <th tabindex="0" aria-controls="example1" style="text-align: center">总量</th>
               <th tabindex="0" aria-controls="example1" style="text-align: center">用量</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">总量</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">比例</th>
               <th tabindex="0" aria-controls="example1" style="text-align: center;width: 180px">操作</th>
             </tr>
             </thead>
@@ -32,7 +32,7 @@
               <tr style="text-align: center">
                 <td><%= item.label %></td>
                 <td><%= item.server_port %></td>
-                <td><%= item.password %></td>
+                <td><%= number_to_human_size item.used_bytes if item.used_bytes %></td>
                 <td><%= number_to_human_size item.total_bytes if item.total_bytes %></td>
                 <td>
                   <div class="progress">
