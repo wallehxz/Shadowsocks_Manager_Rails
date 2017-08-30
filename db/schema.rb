@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828091623) do
+ActiveRecord::Schema.define(version: 20170830024108) do
 
   create_table "lists", force: :cascade do |t|
     t.string   "label",       limit: 255
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20170828091623) do
     t.string   "password",    limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.float    "total_bytes", limit: 24
+    t.float    "used_bytes",  limit: 24
   end
 
   create_table "shadow_socks", force: :cascade do |t|

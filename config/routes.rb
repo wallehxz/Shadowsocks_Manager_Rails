@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'welcome#index'
+  get 'sync_amount', to:'welcome#sync_amount'
   devise_for :users
   devise_scope :user do
     get 'sign_in', to:'users/sessions#new'

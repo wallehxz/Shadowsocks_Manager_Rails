@@ -22,6 +22,8 @@
               <th tabindex="0" aria-controls="example1" style="text-align: center">备注</th>
               <th tabindex="0" aria-controls="example1" style="text-align: center">端口</th>
               <th tabindex="0" aria-controls="example1" style="text-align: center">密码</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">总量</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">用量</th>
               <th tabindex="0" aria-controls="example1" style="text-align: center;width: 180px">操作</th>
             </tr>
             </thead>
@@ -31,6 +33,14 @@
                 <td><%= item.label %></td>
                 <td><%= item.server_port %></td>
                 <td><%= item.password %></td>
+                <td><%= number_to_human_size item.total_bytes if item.total_bytes %></td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-aqua" style="width: <%= item.usage_amount %>%">
+                      <p style="text-align: right;color: #000"><%= item.usage_amount %>%</p>
+                    </div>
+                  </div>
+                </td>
                 <td>
                   <a href="<%= edit_admin_list_path(item) %>" class="btn bg-orange btn-flat">
                     <i class="glyphicon glyphicon-edit"></i>

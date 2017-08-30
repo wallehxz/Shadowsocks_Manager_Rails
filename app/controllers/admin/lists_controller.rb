@@ -7,6 +7,7 @@ class Admin::ListsController < Admin::BaseController
 
   def new
     @list = List.new
+    @list.total_bytes = 1 * 1024**3
   end
 
   def create
@@ -24,6 +25,7 @@ class Admin::ListsController < Admin::BaseController
   end
 
   def update
+    params[:list][:total_bytes] = List.size_to_number(params[:list][:total_bytes]) if params[:list][:total_bytes]
     if @list.update(list_params)
       redirect_to admin_lists_path, notice: '端口密码更新成功'
     else
@@ -44,6 +46,6 @@ class Admin::ListsController < Admin::BaseController
     end
 
     def list_params
-      params.require(:list).permit(:label, :password, :server_port)
+      params.require(:list).permit(:label, :password, :server_port, :total_bytes)
     end
 end
