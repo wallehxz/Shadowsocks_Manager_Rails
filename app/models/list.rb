@@ -33,7 +33,9 @@ class List < ActiveRecord::Base
     config[:fast_open] = ss.fast_open
     config[:workers] = ss.workers
     lists.each do |item|
-      config[:port_password][item.server_port.to_sym] = item.password
+      if item.total_bytes > item.used_bytes
+        config[:port_password][item.server_port.to_sym] = item.password
+      end
     end
     return config.to_json
   end
@@ -48,7 +50,7 @@ class List < ActiveRecord::Base
 
   def usage_amount
     if self.total_bytes.present? && self.used_bytes.present?
-      return (self.used_bytes * 100 /self.total_bytes).round(4)
+      return (self.used_bytes * 100 /self.total_bytes).round(2)
     else
       return 0
     end

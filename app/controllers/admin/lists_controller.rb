@@ -8,6 +8,7 @@ class Admin::ListsController < Admin::BaseController
   def new
     @list = List.new
     @list.total_bytes = 1 * 1024**3
+    @list.used_bytes = 0
   end
 
   def create
@@ -19,7 +20,6 @@ class Admin::ListsController < Admin::BaseController
       render :new
     end
   end
-
 
   def edit
   end
@@ -46,6 +46,6 @@ class Admin::ListsController < Admin::BaseController
     end
 
     def list_params
-      params.require(:list).permit(:label, :password, :server_port, :total_bytes)
+      params.require(:list).permit(:label, :password, :server_port, :total_bytes, :used_bytes)
     end
 end
