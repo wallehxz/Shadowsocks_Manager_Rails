@@ -9,6 +9,7 @@ class List < ActiveRecord::Base
   validates_uniqueness_of :server_port
   after_create :add_iptables_output
   after_destroy :delete_iptables_output
+  scope :ports, -> {order(server_port: :asc)}
 
   def self.generate_config
     file = ShadowSock.first.local_path
@@ -78,6 +79,8 @@ class List < ActiveRecord::Base
       return use_size.to_i * 1024**2
     elsif use_size.upcase.include?('G')
       return use_size.to_i * 1024**3
+    elsif use_size.upcase.include?('T')
+      return use_size.to_i * 1024**4
     else
       return use_size.to_i
     end

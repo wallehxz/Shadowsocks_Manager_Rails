@@ -2,7 +2,7 @@ class Admin::ListsController < Admin::BaseController
   before_action :set_list, only:[:edit, :update, :destroy]
 
   def index
-    @lists = List.paginate(page:params[:page])
+    @lists = List.ports.paginate(page:params[:page])
   end
 
   def new
@@ -16,7 +16,7 @@ class Admin::ListsController < Admin::BaseController
     if @list.save
       redirect_to admin_lists_path, notice: '端口密码添加成功'
     else
-      flash[:warn] = "请完善表单信息"
+      flash[:warn] = "#{params[:list][:server_port]}端口已经存在,请重新填写"
       render :new
     end
   end
@@ -29,7 +29,7 @@ class Admin::ListsController < Admin::BaseController
     if @list.update(list_params)
       redirect_to admin_lists_path, notice: '端口密码更新成功'
     else
-      flash[:warn] = "请完善表单信息"
+      flash[:warn] = "#{params[:list][:server_port]}端口已经存在,请重新填写"
       render :edit
     end
   end

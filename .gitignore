@@ -13,3 +13,4 @@
 /tmp
 /.rvmrc
 /config/database.yml
+/config/deploy/aliyun.rb
