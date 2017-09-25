@@ -12,6 +12,7 @@ class Admin::ListsController < Admin::BaseController
   end
 
   def create
+    params[:list][:total_bytes] = List.size_to_number(params[:list][:total_bytes]) if params[:list][:total_bytes]
     @list = List.new(list_params)
     if @list.save
       redirect_to admin_lists_path, notice: '端口密码添加成功'
